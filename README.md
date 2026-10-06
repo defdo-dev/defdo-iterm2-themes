@@ -35,7 +35,17 @@ Regenerate after editing the `.itermcolors` files:
 python3 tools/gen_opencode_themes.py
 ```
 
-## Install (iTerm2)
+## Install
+
+```
+./install.sh [slug]   # default: base — slugs: base dark gray halloween shadow solid-gray
+```
+
+Imports the iTerm2 preset, installs the OpenCode theme JSON to
+`~/.config/opencode/themes/` and pins `theme` in `tui.json` (preserving
+existing keys, needs `jq`). Restart opencode afterwards.
+
+## Install (iTerm2, manual)
 
 Open iTerm2, then either:
 
