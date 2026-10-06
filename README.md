@@ -1,0 +1,42 @@
+# defdo-iterm2-themes
+
+iTerm2 color schemes for the Defdo theme family, companion to [defdo-vscode-themes](https://github.com/defdo-dev/defdo-vscode-themes). Terminal colors are grouped per theme so the shell matches the editor.
+
+## Themes
+
+| Theme | Background | Notes |
+| --- | --- | --- |
+| `defdo-theme.base` | warm near-black (33, 28, 19) | Default Defdo palette, matches "defdo base" in VS Code |
+| `defdo-theme.halloween` | deep red (54, 29, 31) | Matches "defdo halloween" in VS Code |
+| `defdo-theme.dark` | neutral dark (20, 20, 20) | |
+| `defdo-theme.gray` | medium gray (49, 49, 49) | |
+| `defdo-theme.solid-gray` | warm gray (65, 56, 48) | |
+| `defdo-theme.shadow` | near-black green tint (25, 26, 25) | |
+
+## Install
+
+Open iTerm2, then either:
+
+- **Preferences → Colors → Presets → Import…**, select a `.itermcolors` file, pick the preset in a profile; or
+- double-click a `.itermcolors` file (imports directly), then assign it in your profile.
+
+## Layout
+
+```
+themes/
+  defdo-theme.base.itermcolors
+  defdo-theme.dark.itermcolors
+  defdo-theme.gray.itermcolors
+  defdo-theme.halloween.itermcolors
+  defdo-theme.shadow.itermcolors
+  defdo-theme.solid-gray.itermcolors
+```
+
+## Related
+
+- [defdo-vscode-themes](https://github.com/defdo-dev/defdo-vscode-themes) — VS Code versions of base/halloween
+- `defdo-prompt` in dotfiles — powerlevel10k configs for the same themes
+
+## License
+
+Apache License 2.0. See [LICENSE](LICENSE).
