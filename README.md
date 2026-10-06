@@ -13,7 +13,29 @@ iTerm2 color schemes for the Defdo theme family, companion to [defdo-vscode-them
 | `defdo-theme.solid-gray` | warm gray (65, 56, 48) | |
 | `defdo-theme.shadow` | near-black green tint (25, 26, 25) | |
 
-## Install
+## OpenCode themes
+
+`opencode/` contains the same palettes converted to the OpenCode TUI theme format (JSON, `$schema: https://opencode.ai/theme.json`). All six share one ANSI palette; only the background shades differ.
+
+Install:
+
+```
+cp opencode/defdo-*.json ~/.config/opencode/themes/
+```
+
+Activate via `/theme` in the TUI, or pin in `~/.config/opencode/tui.json`:
+
+```json
+{ "theme": "defdo-base" }
+```
+
+Regenerate after editing the `.itermcolors` files:
+
+```
+python3 tools/gen_opencode_themes.py
+```
+
+## Install (iTerm2)
 
 Open iTerm2, then either:
 
