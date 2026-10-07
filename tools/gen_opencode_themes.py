@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+"""Generate OpenCode TUI themes from the defdo iTerm2 palettes.
+
+Every text-role token is guaranteed >= 4.5:1 (WCAG AA) against the
+worst surface it appears on (backgroundElement) by mixing toward
+white (dark themes) or black (light themes) while preserving hue.
+Run from the repo root: python3 tools/gen_opencode_themes.py
+"""
 import subprocess, json, glob, os
 
 THEMES_DIR = "themes"
@@ -19,14 +26,35 @@ def fmt(rgb):
     return "#%02x%02x%02x" % tuple(round(v) for v in rgb)
 
 
-def lighten(h, amt, toward="#eeffff"):
-    a, b = parse(h), parse(toward)
-    return fmt(tuple(x + (y - x) * amt for x, y in zip(a, b)))
+def mix(a, b, t):
+    return fmt(tuple(x + (y - x) * t for x, y in zip(parse(a), parse(b))))
 
 
-def darken(h, amt):
-    a = parse(h)
-    return fmt(tuple(x * (1 - amt) for x in a))
+def lum(h):
+    s = [c / 255 for c in parse(h)]
+    lin = [c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4 for c in s]
+    return 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2]
+
+
+def ratio(fg, bg):
+    a, b = lum(fg), lum(bg)
+    hi, lo = max(a, b), min(a, b)
+    return (hi + 0.05) / (lo + 0.05)
+
+
+def ensure(color, surface, target=4.5):
+    """Nudge color toward white/black until it hits target contrast on surface."""
+    if ratio(color, surface) >= target:
+        return color
+    dark_bg = lum(surface) < 0.5
+    toward = "#ffffff" if dark_bg else "#000000"
+    t = 0.0
+    while t < 1.0:
+        t += 0.02
+        c = mix(color, toward, t)
+        if ratio(c, surface) >= target:
+            return c
+    return toward
 
 
 for f in sorted(glob.glob(f"{THEMES_DIR}/*.itermcolors")):
@@ -37,36 +65,47 @@ for f in sorted(glob.glob(f"{THEMES_DIR}/*.itermcolors")):
     bg = hexc(d["Background Color"])
     sel = hexc(d["Selection Color"])
 
-    panel = lighten(bg, 0.05, fg)
-    element = lighten(bg, 0.09, fg)
-    border = lighten(bg, 0.16, fg)
-    subtle = lighten(bg, 0.10, fg)
-    muted = lighten(bg, 0.34, fg)
+    panel = mix(bg, fg, 0.05)
+    element = mix(bg, fg, 0.09)
+    border = mix(bg, fg, 0.16)
+    subtle = mix(bg, fg, 0.10)
+    worst = element if lum(element) != lum(bg) else bg
+
+    muted = ensure(mix(bg, fg, 0.34), worst)
+    primary = ensure(a[6], worst)
+    secondary = ensure(a[12], worst)
+    accent = ensure(a[3], worst)
+    error = ensure(a[9], worst)
+    warning = ensure(a[11], worst)
+    success = ensure(a[10], worst)
+    info = ensure(a[14], worst)
+    keyword = ensure(a[13], worst)
 
     def t(c):
         return {"dark": c, "light": c}
 
     theme = {
-        "primary": t(a[6]), "secondary": t(a[12]), "accent": t(a[3]),
-        "error": t(a[9]), "warning": t(a[11]), "success": t(a[10]), "info": t(a[14]),
+        "primary": t(primary), "secondary": t(secondary), "accent": t(accent),
+        "error": t(error), "warning": t(warning), "success": t(success), "info": t(info),
         "text": t(fg), "textMuted": t(muted),
         "background": t(bg), "backgroundPanel": t(panel), "backgroundElement": t(element),
-        "border": t(border), "borderActive": t(a[6]), "borderSubtle": t(subtle),
-        "diffAdded": t(a[10]), "diffRemoved": t(a[9]), "diffContext": t(muted),
-        "diffHunkHeader": t(a[12]), "diffHighlightAdded": t(a[2]), "diffHighlightRemoved": t(a[1]),
-        "diffAddedBg": t(lighten(a[2], 0.12)), "diffRemovedBg": t(lighten(a[1], 0.12)),
+        "border": t(border), "borderActive": t(primary), "borderSubtle": t(subtle),
+        "diffAdded": t(success), "diffRemoved": t(error), "diffContext": t(muted),
+        "diffHunkHeader": t(secondary), "diffHighlightAdded": t(ensure(a[2], worst)),
+        "diffHighlightRemoved": t(ensure(a[1], worst)),
+        "diffAddedBg": t(mix(a[2], bg, 0.88)), "diffRemovedBg": t(mix(a[1], bg, 0.88)),
         "diffContextBg": t(panel), "diffLineNumber": t(muted),
-        "diffAddedLineNumberBg": t(lighten(a[2], 0.12)),
-        "diffRemovedLineNumberBg": t(lighten(a[1], 0.12)),
-        "markdownText": t(fg), "markdownHeading": t(a[6]), "markdownLink": t(a[12]),
-        "markdownLinkText": t(a[14]), "markdownCode": t(a[10]),
-        "markdownBlockQuote": t(muted), "markdownEmph": t(a[3]), "markdownStrong": t(a[11]),
-        "markdownHorizontalRule": t(muted), "markdownListItem": t(a[6]),
-        "markdownListEnumeration": t(a[14]), "markdownImage": t(a[12]),
-        "markdownImageText": t(a[14]), "markdownCodeBlock": t(fg),
-        "syntaxComment": t(muted), "syntaxKeyword": t(a[13]), "syntaxFunction": t(a[6]),
-        "syntaxVariable": t(a[7]), "syntaxString": t(a[10]), "syntaxNumber": t(a[13]),
-        "syntaxType": t(a[14]), "syntaxOperator": t(a[12]), "syntaxPunctuation": t(a[7]),
+        "diffAddedLineNumberBg": t(mix(a[2], bg, 0.88)),
+        "diffRemovedLineNumberBg": t(mix(a[1], bg, 0.88)),
+        "markdownText": t(fg), "markdownHeading": t(primary), "markdownLink": t(secondary),
+        "markdownLinkText": t(info), "markdownCode": t(success),
+        "markdownBlockQuote": t(muted), "markdownEmph": t(accent), "markdownStrong": t(warning),
+        "markdownHorizontalRule": t(muted), "markdownListItem": t(primary),
+        "markdownListEnumeration": t(info), "markdownImage": t(secondary),
+        "markdownImageText": t(info), "markdownCodeBlock": t(fg),
+        "syntaxComment": t(muted), "syntaxKeyword": t(keyword), "syntaxFunction": t(primary),
+        "syntaxVariable": t(ensure(a[7], worst)), "syntaxString": t(success), "syntaxNumber": t(keyword),
+        "syntaxType": t(info), "syntaxOperator": t(secondary), "syntaxPunctuation": t(fg),
     }
 
     doc = {"$schema": "https://opencode.ai/theme.json", "defs": {
@@ -84,4 +123,4 @@ for f in sorted(glob.glob(f"{THEMES_DIR}/*.itermcolors")):
     with open(f"{INSTALL_DIR}/{name}", "w") as fh:
         json.dump(doc, fh, indent=2)
         fh.write("\n")
-    print("wrote", name, "bg", bg)
+    print("wrote", name, "bg", bg, "muted", muted)

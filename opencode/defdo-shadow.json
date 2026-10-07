@@ -17,16 +17,16 @@
       "light": "#11a8cd"
     },
     "secondary": {
-      "dark": "#3b8eea",
-      "light": "#3b8eea"
+      "dark": "#4f99ec",
+      "light": "#4f99ec"
     },
     "accent": {
       "dark": "#f9bc02",
       "light": "#f9bc02"
     },
     "error": {
-      "dark": "#f65757",
-      "light": "#f65757"
+      "dark": "#f76868",
+      "light": "#f76868"
     },
     "warning": {
       "dark": "#f9e802",
@@ -45,8 +45,8 @@
       "light": "#eeffff"
     },
     "textMuted": {
-      "dark": "#616867",
-      "light": "#616867"
+      "dark": "#949898",
+      "light": "#949898"
     },
     "background": {
       "dark": "#191a19",
@@ -77,48 +77,48 @@
       "light": "#23d18b"
     },
     "diffRemoved": {
-      "dark": "#f65757",
-      "light": "#f65757"
+      "dark": "#f76868",
+      "light": "#f76868"
     },
     "diffContext": {
-      "dark": "#616867",
-      "light": "#616867"
+      "dark": "#949898",
+      "light": "#949898"
     },
     "diffHunkHeader": {
-      "dark": "#3b8eea",
-      "light": "#3b8eea"
+      "dark": "#4f99ec",
+      "light": "#4f99ec"
     },
     "diffHighlightAdded": {
       "dark": "#0dbc79",
       "light": "#0dbc79"
     },
     "diffHighlightRemoved": {
-      "dark": "#e24f4f",
-      "light": "#e24f4f"
+      "dark": "#e87272",
+      "light": "#e87272"
     },
     "diffAddedBg": {
-      "dark": "#28c489",
-      "light": "#28c489"
+      "dark": "#182d25",
+      "light": "#182d25"
     },
     "diffRemovedBg": {
-      "dark": "#e36464",
-      "light": "#e36464"
+      "dark": "#31201f",
+      "light": "#31201f"
     },
     "diffContextBg": {
       "dark": "#242524",
       "light": "#242524"
     },
     "diffLineNumber": {
-      "dark": "#616867",
-      "light": "#616867"
+      "dark": "#949898",
+      "light": "#949898"
     },
     "diffAddedLineNumberBg": {
-      "dark": "#28c489",
-      "light": "#28c489"
+      "dark": "#182d25",
+      "light": "#182d25"
     },
     "diffRemovedLineNumberBg": {
-      "dark": "#e36464",
-      "light": "#e36464"
+      "dark": "#31201f",
+      "light": "#31201f"
     },
     "markdownText": {
       "dark": "#eeffff",
@@ -129,8 +129,8 @@
       "light": "#11a8cd"
     },
     "markdownLink": {
-      "dark": "#3b8eea",
-      "light": "#3b8eea"
+      "dark": "#4f99ec",
+      "light": "#4f99ec"
     },
     "markdownLinkText": {
       "dark": "#29b8db",
@@ -141,8 +141,8 @@
       "light": "#23d18b"
     },
     "markdownBlockQuote": {
-      "dark": "#616867",
-      "light": "#616867"
+      "dark": "#949898",
+      "light": "#949898"
     },
     "markdownEmph": {
       "dark": "#f9bc02",
@@ -153,8 +153,8 @@
       "light": "#f9e802"
     },
     "markdownHorizontalRule": {
-      "dark": "#616867",
-      "light": "#616867"
+      "dark": "#949898",
+      "light": "#949898"
     },
     "markdownListItem": {
       "dark": "#11a8cd",
@@ -165,8 +165,8 @@
       "light": "#29b8db"
     },
     "markdownImage": {
-      "dark": "#3b8eea",
-      "light": "#3b8eea"
+      "dark": "#4f99ec",
+      "light": "#4f99ec"
     },
     "markdownImageText": {
       "dark": "#29b8db",
@@ -177,12 +177,12 @@
       "light": "#eeffff"
     },
     "syntaxComment": {
-      "dark": "#616867",
-      "light": "#616867"
+      "dark": "#949898",
+      "light": "#949898"
     },
     "syntaxKeyword": {
-      "dark": "#a870d6",
-      "light": "#a870d6"
+      "dark": "#b281db",
+      "light": "#b281db"
     },
     "syntaxFunction": {
       "dark": "#11a8cd",
@@ -197,20 +197,20 @@
       "light": "#23d18b"
     },
     "syntaxNumber": {
-      "dark": "#a870d6",
-      "light": "#a870d6"
+      "dark": "#b281db",
+      "light": "#b281db"
     },
     "syntaxType": {
       "dark": "#29b8db",
       "light": "#29b8db"
     },
     "syntaxOperator": {
-      "dark": "#3b8eea",
-      "light": "#3b8eea"
+      "dark": "#4f99ec",
+      "light": "#4f99ec"
     },
     "syntaxPunctuation": {
-      "dark": "#e5e5e5",
-      "light": "#e5e5e5"
+      "dark": "#eeffff",
+      "light": "#eeffff"
     }
   }
 }

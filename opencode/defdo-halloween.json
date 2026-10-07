@@ -45,8 +45,8 @@
       "light": "#eeffff"
     },
     "textMuted": {
-      "dark": "#5e576c",
-      "light": "#5e576c"
+      "dark": "#888392",
+      "light": "#888392"
     },
     "background": {
       "dark": "#140021",
@@ -81,8 +81,8 @@
       "light": "#f65757"
     },
     "diffContext": {
-      "dark": "#5e576c",
-      "light": "#5e576c"
+      "dark": "#888392",
+      "light": "#888392"
     },
     "diffHunkHeader": {
       "dark": "#3b8eea",
@@ -93,32 +93,32 @@
       "light": "#0dbc79"
     },
     "diffHighlightRemoved": {
-      "dark": "#e24f4f",
-      "light": "#e24f4f"
+      "dark": "#e35656",
+      "light": "#e35656"
     },
     "diffAddedBg": {
-      "dark": "#28c489",
-      "light": "#28c489"
+      "dark": "#13172c",
+      "light": "#13172c"
     },
     "diffRemovedBg": {
-      "dark": "#e36464",
-      "light": "#e36464"
+      "dark": "#2d0927",
+      "light": "#2d0927"
     },
     "diffContextBg": {
       "dark": "#1f0d2c",
       "light": "#1f0d2c"
     },
     "diffLineNumber": {
-      "dark": "#5e576c",
-      "light": "#5e576c"
+      "dark": "#888392",
+      "light": "#888392"
     },
     "diffAddedLineNumberBg": {
-      "dark": "#28c489",
-      "light": "#28c489"
+      "dark": "#13172c",
+      "light": "#13172c"
     },
     "diffRemovedLineNumberBg": {
-      "dark": "#e36464",
-      "light": "#e36464"
+      "dark": "#2d0927",
+      "light": "#2d0927"
     },
     "markdownText": {
       "dark": "#eeffff",
@@ -141,8 +141,8 @@
       "light": "#23d18b"
     },
     "markdownBlockQuote": {
-      "dark": "#5e576c",
-      "light": "#5e576c"
+      "dark": "#888392",
+      "light": "#888392"
     },
     "markdownEmph": {
       "dark": "#f9bc02",
@@ -153,8 +153,8 @@
       "light": "#f9e802"
     },
     "markdownHorizontalRule": {
-      "dark": "#5e576c",
-      "light": "#5e576c"
+      "dark": "#888392",
+      "light": "#888392"
     },
     "markdownListItem": {
       "dark": "#11a8cd",
@@ -177,8 +177,8 @@
       "light": "#eeffff"
     },
     "syntaxComment": {
-      "dark": "#5e576c",
-      "light": "#5e576c"
+      "dark": "#888392",
+      "light": "#888392"
     },
     "syntaxKeyword": {
       "dark": "#a870d6",
@@ -209,8 +209,8 @@
       "light": "#3b8eea"
     },
     "syntaxPunctuation": {
-      "dark": "#e5e5e5",
-      "light": "#e5e5e5"
+      "dark": "#eeffff",
+      "light": "#eeffff"
     }
   }
 }
