@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import subprocess, json, glob, os
 
-THEMES_DIR = "/Volumes/data/defdo_projects/defdo-iterm2-themes/themes"
-OUT_DIR = "/Volumes/data/defdo_projects/defdo-iterm2-themes/opencode"
+THEMES_DIR = "themes"
+OUT_DIR = "opencode"
 INSTALL_DIR = os.path.expanduser("~/.config/opencode/themes")
 
 

@@ -1,17 +1,30 @@
 # defdo-iterm2-themes
 
-iTerm2 color schemes for the Defdo theme family, companion to [defdo-vscode-themes](https://github.com/defdo-dev/defdo-vscode-themes). Terminal colors are grouped per theme so the shell matches the editor.
+Source of truth for the Defdo theme family. `palette.json` defines the
+canonical palette — one shared ANSI 0-15 set; each variant changes only
+background, selection and accent. Every format in the family is generated
+from these colors:
+
+| Format | Repo / folder | Variants |
+| --- | --- | --- |
+| iTerm2 color presets | `themes/` (this repo) | 7 |
+| iTerm2 Dynamic Profiles | `tools/gen_iterm2_profiles.py` → `DynamicProfiles/defdo-profiles.json` | 7 |
+| OpenCode TUI | `opencode/` (this repo) | 7 |
+| powerlevel10k | `prompt/` (this repo) | 7 |
+| VS Code | [defdo-vscode-themes](https://github.com/defdo-dev/defdo-vscode-themes) | 7 |
+| Zed | [zed-themes](https://github.com/defdo-dev/zed-themes) | 7 |
 
 ## Themes
 
-| Theme | Background | Notes |
-| --- | --- | --- |
-| `defdo-theme.base` | warm near-black (33, 28, 19) | Default Defdo palette, matches "defdo base" in VS Code |
-| `defdo-theme.halloween` | deep red (54, 29, 31) | Matches "defdo halloween" in VS Code |
-| `defdo-theme.dark` | neutral dark (20, 20, 20) | |
-| `defdo-theme.gray` | medium gray (49, 49, 49) | |
-| `defdo-theme.solid-gray` | warm gray (65, 56, 48) | |
-| `defdo-theme.shadow` | near-black green tint (25, 26, 25) | |
+| Theme | Background | Accent | Notes |
+| --- | --- | --- | --- |
+| `base` | `#131c21` | `#bebc2e` | Default Defdo palette |
+| `halloween` | `#140021` | `#afa6f6` | Purple variant |
+| `dark` | `#141414` | `#bebc2e` | |
+| `gray` | `#313131` | `#bebc2e` | |
+| `solid-gray` | `#303841` | `#bebc2e` | |
+| `shadow` | `#191a19` | `#bebc2e` | |
+| `yellow` | `#0f0f0a` | `#f9bc02` | Matches the defdo-yellow VS Code theme |
 
 ## OpenCode themes
 
@@ -52,6 +65,18 @@ iTerm2 Dynamic Profiles (`~/Library/Application Support/iTerm2/DynamicProfiles/d
 tagged `defdo`, font `JetBrainsMonoNF-Regular 12` — override with
 `DEFDO_ITERM_FONT`). iTerm2 hot-reloads the folder; switch with `Cmd+O`.
 Nothing is written into `com.googlecode.iterm2.plist`.
+
+## powerlevel10k
+
+`prompt/p10k.defdo-theme-<slug>.zsh` — rainbow powerline configs. Use one as
+your `~/.p10k.zsh` (or source it from it):
+
+```
+cp prompt/p10k.defdo-theme-base.zsh ~/.p10k.zsh && source ~/.p10k.zsh
+```
+
+All variants share the ANSI palette, so segment colors are identical; the
+terminal background comes from the iTerm2 profile, not the p10k file.
 
 ## Install (iTerm2, manual)
 

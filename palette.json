@@ -1,0 +1,31 @@
+{
+  "$comment": "Canonical defdo theme palette. All formats (iTerm2, OpenCode, VS Code, Zed, p10k) derive from this file. The ANSI 0-15 palette is shared by every theme; only background, selection and accent vary per variant.",
+  "foreground": "#eeffff",
+  "ansi": {
+    "0": "#131c21",
+    "1": "#e24f4f",
+    "2": "#0dbc79",
+    "3": "#f9bc02",
+    "4": "#006ee8",
+    "5": "#8954ac",
+    "6": "#11a8cd",
+    "7": "#e5e5e5",
+    "8": "#666666",
+    "9": "#f65757",
+    "10": "#23d18b",
+    "11": "#f9e802",
+    "12": "#3b8eea",
+    "13": "#a870d6",
+    "14": "#29b8db",
+    "15": "#fffefe"
+  },
+  "themes": {
+    "base":        { "background": "#131c21", "selection": "#bebc2e", "accent": "#bebc2e" },
+    "halloween":   { "background": "#140021", "selection": "#afa6f6", "accent": "#afa6f6" },
+    "dark":        { "background": "#141414", "selection": "#bebc2e", "accent": "#bebc2e" },
+    "gray":        { "background": "#313131", "selection": "#bebc2e", "accent": "#bebc2e" },
+    "solid-gray":  { "background": "#303841", "selection": "#bebc2e", "accent": "#bebc2e" },
+    "shadow":      { "background": "#191a19", "selection": "#bebc2e", "accent": "#bebc2e" },
+    "yellow":      { "background": "#0f0f0a", "selection": "#f9bc02", "accent": "#f9bc02" }
+  }
+}
