@@ -51,13 +51,29 @@ def profile(slug, colors):
     }
 
 
+def studio_profile(base_colors):
+    """Auto-launch profile: opens iTerm straight into the default studio space."""
+    p = profile("studio", base_colors)
+    p["Badge Format"] = "defdo studio"
+    p["Custom Command"] = "Yes"
+    p["Command"] = ("zsh -ic 'command -v studio >/dev/null && studio default"
+                    " || echo \"studio not found — see ~/.dotfiles/defdo-ai-studio/README.md\" && zsh -l'")
+    return p
+
+
 def main():
     install = "--install" in sys.argv
     repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     profiles = []
+    base_colors = None
     for f in sorted(glob.glob(f"{repo}/themes/*.itermcolors")):
         slug = os.path.basename(f).replace("defdo-theme.", "").replace(".itermcolors", "")
-        profiles.append(profile(slug, load_palette(f)))
+        colors = load_palette(f)
+        profiles.append(profile(slug, colors))
+        if slug == "base":
+            base_colors = colors
+    if base_colors:
+        profiles.append(studio_profile(base_colors))
     doc = {"Profiles": profiles}
 
     payload = json.dumps(doc, indent=2) + "\n"
