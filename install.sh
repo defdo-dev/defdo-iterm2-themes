@@ -22,6 +22,14 @@ else
   echo "iTerm2: imported defdo-theme.${SLUG} (assign it in Profile → Colors → Presets)"
 fi
 
+# 1b. IDE exports (manual import; documented in README)
+for d in jetbrains arduino xcode vscode vim; do
+  [[ -d "$REPO_DIR/$d" ]] || continue
+  f=$(ls "$REPO_DIR/$d"/defdo-${SLUG}.* "$REPO_DIR/$d"/defdo-theme-${SLUG}.* "$REPO_DIR/$d"/defdo_${SLUG//-/_}.* 2>/dev/null | head -1) || true
+  if [[ -n "$f" ]]; then echo "IDE: $d export available -> $f"; fi
+done
+[[ -d "$REPO_DIR/gnome" ]] && echo "Linux: ./gnome/defdo-${SLUG}.sh installs a GNOME Terminal profile"
+
 # 2. iTerm2 Dynamic Profiles (all themes, live-editable, keeps plist clean)
 if command -v jq >/dev/null 2>&1 && [[ -f "$REPO_DIR/tools/gen_iterm2_profiles.py" ]]; then
   python3 "$REPO_DIR/tools/gen_iterm2_profiles.py" --install
