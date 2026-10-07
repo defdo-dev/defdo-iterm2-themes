@@ -16,6 +16,7 @@ from these colors:
 | JetBrains / Android Studio | `jetbrains/` (this repo) | 7 |
 | Arduino IDE 2 | `arduino/` (this repo) | 7 |
 | Xcode | `xcode/` (this repo) | 7 |
+| vim / Neovim | `vim/` (this repo) | 7 |
 
 ## Themes
 

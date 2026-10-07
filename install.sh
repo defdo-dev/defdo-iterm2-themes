@@ -27,6 +27,15 @@ mkdir -p "$OPENCODE_THEME_DIR"
 cp "$REPO_DIR/opencode/defdo-${SLUG}.json" "$OPENCODE_THEME_DIR/"
 echo "OpenCode: installed defdo-${SLUG} to $OPENCODE_THEME_DIR"
 
+# 3b. vim / Neovim colorscheme
+for cd in "$HOME/.vim/colors" "$HOME/.config/nvim/colors"; do
+  if [[ -d "${cd%/colors}" || "$cd" == "$HOME/.vim/colors" ]]; then
+    mkdir -p "$cd"
+    cp "$REPO_DIR/vim/defdo_${SLUG//-/_}.vim" "$cd/" 2>/dev/null \
+      && echo "vim: installed defdo_${SLUG//-/_}.vim -> $cd"
+  fi
+done
+
 # 4. Activate in tui.json (create if missing, preserve other keys)
 TUI_JSON="${XDG_CONFIG_HOME:-$HOME/.config}/opencode/tui.json"
 if command -v jq >/dev/null 2>&1; then
