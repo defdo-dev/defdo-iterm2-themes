@@ -257,8 +257,59 @@ def xcode(slug, t, fg, ansi, appear):
     return buf.getvalue().decode()
 
 
+# -------------------------------------------------------------------- GNOME
+def gnome(slug, t, fg, ansi, appear):
+    palette = ":".join(ansi[str(i)] for i in range(16))
+    name = f"defdo {slug}"
+    cursor = t.get("cursor", t["accent"])
+    bg = t["background"]
+    sel = t["selection"]
+
+    def dq(v):  # dconf expects "'value'"
+        q = chr(39)
+        return '"' + q + v + q + '"'
+
+    lines = [
+        "#!/usr/bin/env bash",
+        f"# {name} - GNOME Terminal (Ubuntu 20.04+) profile installer.",
+        "# Creates a dconf profile; pick it in Preferences > Profiles. Safe to re-run.",
+        "set -euo pipefail",
+        'command -v dconf >/dev/null || { echo "dconf not found - sudo apt install dconf-cli" >&2; exit 1; }',
+        'command -v uuidgen >/dev/null || { echo "uuidgen not found - sudo apt install uuid-runtime" >&2; exit 1; }',
+        "",
+        "UUID=$(uuidgen | tr 'A-Z' 'a-z')",
+        'P="/org/gnome/terminal/legacy/profiles:/:$UUID"',
+        "",
+        f'dconf write "$P/name" {dq(name)}',
+        f'dconf write "$P/palette" {dq(palette)}',
+        f'dconf write "$P/background-color" {dq(bg)}',
+        f'dconf write "$P/foreground-color" {dq(fg)}',
+        f'dconf write "$P/cursor-background-color" {dq(cursor)}',
+        f'dconf write "$P/cursor-foreground-color" {dq(bg)}',
+        f'dconf write "$P/selection-background-color" {dq(sel)}',
+        f'dconf write "$P/selection-foreground-color" {dq(bg)}',
+        f'dconf write "$P/bold-color" {dq(fg)}',
+        'dconf write "$P/use-theme-colors" "false"',
+        'dconf write "$P/use-theme-transparency" "false"',
+        'dconf write "$P/use-transparent-background" "false"',
+        f'dconf write "$P/visible-name" {dq(name)}',
+        "",
+        "# register the profile (append to profile-list)",
+        "LIST=$(gsettings get org.gnome.Terminal profile-list)",
+        "if [[ \"$LIST\" == \"[]\" ]]; then",
+        "  LIST=\"['profile:$UUID']\"",
+        "else",
+        "  LIST=\"${LIST%]}, 'profile:$UUID']\"",
+        "fi",
+        "gsettings set org.gnome.Terminal profile-list \"$LIST\"",
+        f'echo "{name} installed - choose it in GNOME Terminal > Preferences > Profiles"',
+        "",
+    ]
+    return "\n".join(lines)
+
+
 def main():
-    for out in ("jetbrains", "arduino", "xcode"):
+    for out in ("jetbrains", "arduino", "xcode", "gnome"):
         os.makedirs(out, exist_ok=True)
     for slug, t, fg, ansi, appear in themes():
         name = slug
@@ -268,7 +319,11 @@ def main():
             f.write(arduino(slug, t, fg, ansi, appear))
         with open(f"xcode/defdo-{name}.xccolortheme", "w") as f:
             f.write(xcode(slug, t, fg, ansi, appear))
-        print("wrote", name, "x3")
+        gp = f"gnome/defdo-{name}.sh"
+        with open(gp, "w") as f:
+            f.write(gnome(slug, t, fg, ansi, appear))
+        os.chmod(gp, 0o755)
+        print("wrote", name, "x4")
 
 
 if __name__ == "__main__":
