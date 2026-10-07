@@ -45,6 +45,14 @@ Imports the iTerm2 preset, installs the OpenCode theme JSON to
 `~/.config/opencode/themes/` and pins `theme` in `tui.json` (preserving
 existing keys, needs `jq`). Restart opencode afterwards.
 
+## Dynamic Profiles (recommended)
+
+`tools/gen_iterm2_profiles.py --install` writes all six themes as
+iTerm2 Dynamic Profiles (`~/Library/Application Support/iTerm2/DynamicProfiles/defdo-profiles.json`,
+tagged `defdo`, font `JetBrainsMonoNF-Regular 12` — override with
+`DEFDO_ITERM_FONT`). iTerm2 hot-reloads the folder; switch with `Cmd+O`.
+Nothing is written into `com.googlecode.iterm2.plist`.
+
 ## Install (iTerm2, manual)
 
 Open iTerm2, then either:

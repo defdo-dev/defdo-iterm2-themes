@@ -17,12 +17,17 @@ cp "$THEME_FILE" "$ITTERM_DIR/defdo-theme.${SLUG}.itermcolors"
 open "$THEME_FILE"
 echo "iTerm2: imported defdo-theme.${SLUG} (assign it in Profile → Colors → Presets)"
 
-# 2. OpenCode theme JSON
+# 2. iTerm2 Dynamic Profiles (all themes, live-editable, keeps plist clean)
+if command -v jq >/dev/null 2>&1 && [[ -f "$REPO_DIR/tools/gen_iterm2_profiles.py" ]]; then
+  python3 "$REPO_DIR/tools/gen_iterm2_profiles.py" --install
+fi
+
+# 3. OpenCode theme JSON
 mkdir -p "$OPENCODE_THEME_DIR"
 cp "$REPO_DIR/opencode/defdo-${SLUG}.json" "$OPENCODE_THEME_DIR/"
 echo "OpenCode: installed defdo-${SLUG} to $OPENCODE_THEME_DIR"
 
-# 3. Activate in tui.json (create if missing, preserve other keys)
+# 4. Activate in tui.json (create if missing, preserve other keys)
 TUI_JSON="${XDG_CONFIG_HOME:-$HOME/.config}/opencode/tui.json"
 if command -v jq >/dev/null 2>&1; then
   if [[ -f "$TUI_JSON" ]]; then
