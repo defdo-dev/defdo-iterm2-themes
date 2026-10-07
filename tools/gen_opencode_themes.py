@@ -9,6 +9,7 @@ Run from the repo root: python3 tools/gen_opencode_themes.py
 import subprocess, json, glob, os
 
 THEMES_DIR = "themes"
+PALETTE = "palette.json"
 OUT_DIR = "opencode"
 INSTALL_DIR = os.path.expanduser("~/.config/opencode/themes")
 
@@ -57,6 +58,10 @@ def ensure(color, surface, target=4.5):
     return toward
 
 
+_pal = {}
+if os.path.exists(PALETTE):
+    _pal = json.load(open(PALETTE)).get("themes", {})
+
 for f in sorted(glob.glob(f"{THEMES_DIR}/*.itermcolors")):
     slug = os.path.basename(f).replace("defdo-theme.", "").replace(".itermcolors", "")
     d = json.loads(subprocess.check_output(["plutil", "-convert", "json", "-o", "-", f]))
@@ -65,13 +70,14 @@ for f in sorted(glob.glob(f"{THEMES_DIR}/*.itermcolors")):
     bg = hexc(d["Background Color"])
     sel = hexc(d["Selection Color"])
 
-    panel = mix(bg, fg, 0.05)
-    element = mix(bg, fg, 0.09)
-    border = mix(bg, fg, 0.16)
-    subtle = mix(bg, fg, 0.10)
+    surf = _pal.get(slug, {}).get("surfaces", {})
+    panel = surf.get("panel", mix(bg, fg, 0.05))
+    element = surf.get("element", mix(bg, fg, 0.09))
+    border = surf.get("border", mix(bg, fg, 0.16))
+    subtle = surf.get("subtle", mix(bg, fg, 0.10))
     worst = element if lum(element) != lum(bg) else bg
 
-    muted = ensure(mix(bg, fg, 0.34), worst)
+    muted = ensure(surf.get("muted", mix(bg, fg, 0.34)), worst)
     primary = ensure(a[6], worst)
     secondary = ensure(a[12], worst)
     accent = ensure(a[3], worst)
