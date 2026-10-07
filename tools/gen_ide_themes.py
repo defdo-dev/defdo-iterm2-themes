@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate IDE themes from palette.json: JetBrains (Android Studio), Arduino IDE 2, Xcode.
 
-All ten defdo variants (free + premium) are emitted into:
+All free defdo variants are emitted into:
   jetbrains/defdo-<slug>.theme        -> Settings > Editor > Color Scheme > gear > Import Scheme
   arduino/defdo-<slug>.settings.json  -> paste into Arduino IDE 2 settings.json (File > Preferences)
   xcode/defdo-<slug>.xccolortheme     -> drop into ~/Library/Developer/Xcode/UserData/FontAndColorThemes/
