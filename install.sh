@@ -11,11 +11,16 @@ OPENCODE_THEME_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/opencode/themes"
 THEME_FILE="$REPO_DIR/themes/defdo-theme.${SLUG}.itermcolors"
 [[ -f "$THEME_FILE" ]] || { echo "unknown theme: $SLUG (available: $(cd "$REPO_DIR/themes" && ls defdo-theme.*.itermcolors | sed -e 's/defdo-theme\.//' -e 's/\.itermcolors//' | tr '\n' ' '))" >&2; exit 1; }
 
-# 1. iTerm2 color preset
+# 1. iTerm2 color preset (skip if already imported — the Dynamic Profiles
+#    carry inline colors anyway; re-importing triggers the duplicate dialog)
 mkdir -p "$ITTERM_DIR"
 cp "$THEME_FILE" "$ITTERM_DIR/defdo-theme.${SLUG}.itermcolors"
-open "$THEME_FILE"
-echo "iTerm2: imported defdo-theme.${SLUG} (assign it in Profile → Colors → Presets)"
+if defaults read com.googlecode.iterm2 "Custom Color Presets" 2>/dev/null | grep -q "defdo-theme.${SLUG}"; then
+  echo "iTerm2: preset defdo-theme.${SLUG} already imported — skipping"
+else
+  open "$THEME_FILE"
+  echo "iTerm2: imported defdo-theme.${SLUG} (assign it in Profile → Colors → Presets)"
+fi
 
 # 2. iTerm2 Dynamic Profiles (all themes, live-editable, keeps plist clean)
 if command -v jq >/dev/null 2>&1 && [[ -f "$REPO_DIR/tools/gen_iterm2_profiles.py" ]]; then
