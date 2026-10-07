@@ -1,0 +1,192 @@
+<scheme name="defdo yellow" version="142" parent_scheme="Darcula">
+  <meta>
+    <property name="author" value="defdo"/>
+  </meta>
+  <colors>
+    <option name="BACKGROUND" value="0f0f0a"/>
+    <option name="CARET_COLOR" value="f9bc02"/>
+    <option name="CARET_ROW_COLOR" value="1c1d19"/>
+    <option name="SELECTION_BACKGROUND" value="f9bc02"/>
+    <option name="SELECTION_FOREGROUND" value=""/>
+    <option name="GUTTER_BACKGROUND" value="0f0f0a"/>
+    <option name="LINE_NUMBERS_COLOR" value="525754"/>
+    <option name="FOLDING_LINES_COLOR" value="373a36"/>
+    <option name="INDENT_GUIDE" value="373a36"/>
+    <option name="SELECTED_INDENT_GUIDE" value="f9bc02"/>
+    <option name="WHITESPACES" value="373a36"/>
+    <option name="METHOD_SEPARATORS_COLOR" value="373a36"/>
+    <option name="ADDED_LINES_COLOR" value="0dbc79"/>
+    <option name="MODIFIED_LINES_COLOR" value="f9bc02"/>
+    <option name="DELETED_LINES_COLOR" value="e24f4f"/>
+    <option name="TELEPATHY_COLOR" value="11a8cd"/>
+    <option name="HYPERLINK_COLOR" value="0291f7"/>
+    <option name="FOLLOWED_HYPERLINK_COLOR" value="89c6df"/>
+  </colors>
+  <attributes>
+    <option name="TEXT">
+      <value>
+        <option name="FOREGROUND" value="eeffff"/>
+      </value>
+    </option>
+    <option name="FOLLOWED_HYPERLINK_ATTRIBUTES">
+      <value>
+        <option name="FOREGROUND" value="291f7"/><option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="KEYWORD">
+      <value>
+        <option name="FOREGROUND" value="bfa6f1"/>
+      </value>
+    </option>
+    <option name="CONTROL_FLOW_KEYWORD">
+      <value>
+        <option name="FOREGROUND" value="bfa6f1"/><option name="FONT_TYPE" value="1"/>
+      </value>
+    </option>
+    <option name="STRING">
+      <value>
+        <option name="FOREGROUND" value="a6c27b"/>
+      </value>
+    </option>
+    <option name="CHARACTER">
+      <value>
+        <option name="FOREGROUND" value="a6c27b"/>
+      </value>
+    </option>
+    <option name="ESCAPE_CHARACTER">
+      <value>
+        <option name="FOREGROUND" value="f78c6c"/>
+      </value>
+    </option>
+    <option name="NUMBER">
+      <value>
+        <option name="FOREGROUND" value="f78c6c"/>
+      </value>
+    </option>
+    <option name="CONSTANT">
+      <value>
+        <option name="FOREGROUND" value="f78c6c"/>
+      </value>
+    </option>
+    <option name="STATIC_FINAL_FIELD">
+      <value>
+        <option name="FOREGROUND" value="f78c6c"/>
+      </value>
+    </option>
+    <option name="FUNCTION_DECLARATION">
+      <value>
+        <option name="FOREGROUND" value="0291f7"/>
+      </value>
+    </option>
+    <option name="FUNCTION_CALL">
+      <value>
+        <option name="FOREGROUND" value="0291f7"/>
+      </value>
+    </option>
+    <option name="GLOBAL_FUNCTION">
+      <value>
+        <option name="FOREGROUND" value="0291f7"/>
+      </value>
+    </option>
+    <option name="CLASS_NAME">
+      <value>
+        <option name="FOREGROUND" value="f9bc02"/>
+      </value>
+    </option>
+    <option name="INTERFACE_NAME">
+      <value>
+        <option name="FOREGROUND" value="f9bc02"/>
+      </value>
+    </option>
+    <option name="ABSTRACT_CLASS_NAME_ATTRIBUTES">
+      <value>
+        <option name="FOREGROUND" value="f9bc02"/><option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="ANNOTATION_NAME_ATTRIBUTES">
+      <value>
+        <option name="FOREGROUND" value="f9bc02"/><option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="DOC_COMMENT">
+      <value>
+        <option name="FOREGROUND" value="546e7a"/><option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="COMMENT">
+      <value>
+        <option name="FOREGROUND" value="546e7a"/><option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="BLOCK_COMMENT">
+      <value>
+        <option name="FOREGROUND" value="546e7a"/><option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="LINE_COMMENT">
+      <value>
+        <option name="FOREGROUND" value="546e7a"/><option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="OPERATOR">
+      <value>
+        <option name="FOREGROUND" value="89c6df"/>
+      </value>
+    </option>
+    <option name="PARENTHETS">
+      <value>
+        <option name="FOREGROUND" value="89c6df"/>
+      </value>
+    </option>
+    <option name="BRACKETS">
+      <value>
+        <option name="FOREGROUND" value="89c6df"/>
+      </value>
+    </option>
+    <option name="BRACES">
+      <value>
+        <option name="FOREGROUND" value="89c6df"/>
+      </value>
+    </option>
+    <option name="COMMA">
+      <value>
+        <option name="FOREGROUND" value="89c6df"/>
+      </value>
+    </option>
+    <option name="SEMICOLON">
+      <value>
+        <option name="FOREGROUND" value="89c6df"/>
+      </value>
+    </option>
+    <option name="DOT">
+      <value>
+        <option name="FOREGROUND" value="89c6df"/>
+      </value>
+    </option>
+    <option name="GLOBAL_VARIABLE">
+      <value>
+        <option name="FOREGROUND" value="eeffff"/>
+      </value>
+    </option>
+    <option name="LOCAL_VARIABLE">
+      <value>
+        <option name="FOREGROUND" value="eeffff"/>
+      </value>
+    </option>
+    <option name="PARAMETER">
+      <value>
+        <option name="FOREGROUND" value="eeffff"/>
+      </value>
+    </option>
+    <option name="TAG_NAME">
+      <value>
+        <option name="FOREGROUND" value="f07178"/>
+      </value>
+    </option>
+    <option name="ATTRIBUTE_NAME">
+      <value>
+        <option name="FOREGROUND" value="f9bc02"/>
+      </value>
+    </option>
+  </attributes>
+</scheme>

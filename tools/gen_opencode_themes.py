@@ -19,8 +19,8 @@ def fmt(rgb):
     return "#%02x%02x%02x" % tuple(round(v) for v in rgb)
 
 
-def lighten(h, amt):
-    a, b = parse(h), (238, 255, 255)
+def lighten(h, amt, toward="#eeffff"):
+    a, b = parse(h), parse(toward)
     return fmt(tuple(x + (y - x) * amt for x, y in zip(a, b)))
 
 
@@ -37,11 +37,11 @@ for f in sorted(glob.glob(f"{THEMES_DIR}/*.itermcolors")):
     bg = hexc(d["Background Color"])
     sel = hexc(d["Selection Color"])
 
-    panel = lighten(bg, 0.05)
-    element = lighten(bg, 0.09)
-    border = lighten(bg, 0.16)
-    subtle = lighten(bg, 0.10)
-    muted = lighten(bg, 0.34)
+    panel = lighten(bg, 0.05, fg)
+    element = lighten(bg, 0.09, fg)
+    border = lighten(bg, 0.16, fg)
+    subtle = lighten(bg, 0.10, fg)
+    muted = lighten(bg, 0.34, fg)
 
     def t(c):
         return {"dark": c, "light": c}

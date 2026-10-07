@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>defdo themes — Tu terminal, a tu ritmo</title>
+<style>
+  :root {
+    --cream: #f7f2e9; --ink: #16181d; --cyan: #00c8f0; --cyan-deep: #0e7490;
+    --wine: #7a3b47; --gold: #ffc94f; --card: #fffdf8; --line: #e3dccb;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--cream); color: var(--ink);
+         font: 16px/1.5 "Avenir Next", "Segoe UI", system-ui, sans-serif; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; }
+  .logo { font-weight: 800; font-size: 22px; letter-spacing: -0.5px; }
+  .logo span { color: var(--cyan-deep); }
+  nav a { color: var(--ink); text-decoration: none; margin-left: 26px; font-weight: 600; }
+  .hero { padding: 64px 0 48px; }
+  .hero h1 { font-size: clamp(40px, 7vw, 76px); line-height: 0.95; letter-spacing: -2px; font-weight: 900; }
+  .hero h1 em { font-style: normal; color: var(--cyan-deep);
+                background: linear-gradient(transparent 78%, var(--cyan) 78%); }
+  .hero p { margin-top: 18px; font-size: 20px; color: #4a4d55; max-width: 34em; }
+  .cta { display: inline-block; margin-top: 28px; background: var(--cyan); color: var(--ink);
+         font-weight: 800; padding: 14px 26px; border-radius: 10px; text-decoration: none; }
+  .cta.ghost { background: transparent; border: 2px solid var(--ink); margin-left: 12px; }
+  h2 { font-size: clamp(28px, 4vw, 40px); letter-spacing: -1px; font-weight: 900; margin: 48px 0 8px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; margin-top: 26px; }
+  .card { background: var(--card); border: 1.5px solid var(--line); border-radius: 14px; padding: 26px; position: relative; }
+  .card.popular { border: 2.5px solid var(--cyan-deep); box-shadow: 0 10px 30px rgba(14,116,144,.14); }
+  .tag { position: absolute; top: -13px; left: 20px; background: var(--cyan); font-size: 12px;
+         font-weight: 800; padding: 3px 12px; border-radius: 999px; letter-spacing: .4px; }
+  .card h3 { font-size: 26px; font-weight: 900; letter-spacing: -0.5px; }
+  .card .sub { color: #6a6d75; margin: 4px 0 14px; }
+  .swatch { display: flex; height: 26px; border-radius: 7px; overflow: hidden; margin: 14px 0; border: 1px solid var(--line); }
+  .swatch i { flex: 1; }
+  .themes { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 13px; color: #4a4d55; }
+  .themes b { color: var(--ink); }
+  .price { font-size: 34px; font-weight: 900; margin: 10px 0 2px; }
+  .price small { font-size: 14px; font-weight: 600; color: #6a6d75; }
+  ul.feat { list-style: none; margin: 12px 0 18px; }
+  ul.feat li { padding: 4px 0 4px 24px; position: relative; }
+  ul.feat li::before { content: "⚡"; position: absolute; left: 0; }
+  .btn { display: block; text-align: center; background: var(--cyan); color: var(--ink); font-weight: 800;
+         padding: 12px; border-radius: 10px; text-decoration: none; }
+  .btn.outline { background: transparent; border: 2px solid var(--ink); }
+  .steps { background: var(--ink); color: var(--cream); border-radius: 18px; padding: 44px 36px; margin: 56px 0; }
+  .steps h2 { color: var(--cream); margin-top: 0; }
+  .steps .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 26px; margin-top: 22px; }
+  .step b { color: var(--cyan); font-size: 15px; }
+  .step p { color: #c9cdd6; font-size: 15px; margin-top: 6px; }
+  code { font-family: ui-monospace, "SF Mono", Menlo, monospace; background: rgba(0,200,240,.14);
+         color: #7ee7ff; padding: 2px 7px; border-radius: 6px; font-size: 13.5px; display: inline-block; margin-top: 8px; }
+  footer { padding: 34px 0 46px; color: #6a6d75; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">defdo<span>.dev</span> themes</div>
+    <nav>
+      <a href="#planes">Planes</a><a href="#empezar">Cómo funciona</a><a href="#repo">Ayuda</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Tu terminal,<br><em>a tu ritmo.</em></h1>
+    <p>La familia de temas defdo para todo tu stack: iTerm2, OpenCode, VS Code, Zed, Android Studio, Arduino IDE y Xcode. Una sola paleta, diez variantes, cero Node.</p>
+    <a class="cta" href="#planes">Ver planes →</a>
+    <a class="cta ghost" href="#repo">Conoce los temas</a>
+  </section>
+
+  <h2 id="planes">Encuentra tu plan</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Free</h3>
+      <div class="sub">Para tu día a día.</div>
+      <div class="swatch"><i style="background:#131c21"></i><i style="background:#141414"></i><i style="background:#313131"></i><i style="background:#303841"></i><i style="background:#191a19"></i><i style="background:#0f0f0a"></i><i style="background:#140021"></i></div>
+      <div class="themes"><b>7 temas:</b> base · halloween · dark · gray · solid-gray · shadow · yellow</div>
+      <div class="price">Gratis <small>Apache 2.0</small></div>
+      <a class="btn outline" href="https://github.com/defdo-dev/defdo-iterm2-themes">Clonar repo</a>
+    </div>
+    <div class="card popular">
+      <div class="tag">MÁS POPULAR</div>
+      <h3>Pro</h3>
+      <div class="sub">Cian eléctrico para modo focus.</div>
+      <div class="swatch"><i style="background:#0e1420"></i><i style="background:#29d3f5"></i><i style="background:#11a8cd"></i><i style="background:#23d18b"></i><i style="background:#f9e802"></i><i style="background:#3b8eea"></i><i style="background:#a870d6"></i></div>
+      <div class="themes"><b>defdo pro</b> — 10 formatos: terminal, TUI, editor, IDEs</div>
+      <div class="price">$99 <small>MXN</small></div>
+      <a class="btn" href="#empezar">Quiero Pro →</a>
+    </div>
+    <div class="card">
+      <h3>Legend</h3>
+      <div class="sub">Dorado. Para cuando ya lo eres.</div>
+      <div class="swatch"><i style="background:#131c21"></i><i style="background:#ffc94f"></i><i style="background:#ffd97a"></i><i style="background:#fff6e0"></i><i style="background:#0dbc79"></i><i style="background:#f9bc02"></i><i style="background:#e24f4f"></i></div>
+      <div class="themes"><b>defdo legend</b> + <b>latte</b> (light) — 10 formatos</div>
+      <div class="price">$149 <small>MXN</small></div>
+      <a class="btn outline" href="#empezar">Quiero Legend →</a>
+    </div>
+  </div>
+
+  <section class="steps" id="empezar">
+    <h2>Tres pasos y listo</h2>
+    <p>Sin npm, sin build. Un comando.</p>
+    <div class="grid">
+      <div class="step"><b>1 · Clona</b>
+        <p>Descarga la familia completa:</p>
+        <code>git clone git@github.com:defdo-dev/defdo-iterm2-themes.git</code></div>
+      <div class="step"><b>2 · Instala</b>
+        <p>Elige tu tema y corre:</p>
+        <code>./install.sh pro</code>
+        <p>iTerm2, OpenCode y los perfiles dinámicos quedan listos.</p></div>
+      <div class="step"><b>3 · Importa a tus IDEs</b>
+        <p>Android Studio: <i>Settings → Color Scheme → Import</i> (<code>jetbrains/defdo-pro.theme</code>) · Arduino IDE 2: pega <code>arduino/defdo-pro.settings.json</code> · Xcode: arrastra <code>xcode/defdo-pro.xccolortheme</code>.</p></div>
+    </div>
+  </section>
+
+  <footer id="repo">
+    Fuente de verdad: <b>palette.json</b> · repos: defdo-iterm2-themes · defdo-vscode-themes · zed-themes ·
+    Los temas premium (latte/pro/legend) bajo licencia comercial; el tier free es Apache 2.0.
+  </footer>
+</div>
+</body>
+</html>

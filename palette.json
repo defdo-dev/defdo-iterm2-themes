@@ -26,6 +26,33 @@
     "gray":        { "background": "#313131", "selection": "#bebc2e", "accent": "#bebc2e" },
     "solid-gray":  { "background": "#303841", "selection": "#bebc2e", "accent": "#bebc2e" },
     "shadow":      { "background": "#191a19", "selection": "#bebc2e", "accent": "#bebc2e" },
-    "yellow":      { "background": "#0f0f0a", "selection": "#f9bc02", "accent": "#f9bc02" }
+    "yellow":      { "background": "#0f0f0a", "selection": "#f9bc02", "accent": "#f9bc02" },
+    "latte": {
+      "tier": "premium",
+      "appearance": "light",
+      "background": "#f7f2e9",
+      "foreground": "#16181d",
+      "selection": "#bdebf7",
+      "accent": "#0e9bc0",
+      "ansi": {
+        "0": "#3a3a3a", "1": "#b33a3a", "2": "#0a7a4f", "3": "#9c7a02",
+        "4": "#0055b8", "5": "#6a3d8f", "6": "#0b7a94", "7": "#4a4a4a",
+        "8": "#8a8a8a", "9": "#d04545", "10": "#0e9c66", "11": "#c9a800",
+        "12": "#2b6fd0", "13": "#8b57b8", "14": "#1194b0", "15": "#16181d"
+      }
+    },
+    "pro": {
+      "tier": "premium",
+      "background": "#0e1420",
+      "selection": "#29d3f5",
+      "accent": "#29d3f5"
+    },
+    "legend": {
+      "tier": "premium",
+      "background": "#131c21",
+      "foreground": "#fff6e0",
+      "selection": "#ffd97a",
+      "accent": "#ffc94f"
+    }
   }
 }

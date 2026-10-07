@@ -7,12 +7,15 @@ from these colors:
 
 | Format | Repo / folder | Variants |
 | --- | --- | --- |
-| iTerm2 color presets | `themes/` (this repo) | 7 |
-| iTerm2 Dynamic Profiles | `tools/gen_iterm2_profiles.py` → `DynamicProfiles/defdo-profiles.json` | 7 |
-| OpenCode TUI | `opencode/` (this repo) | 7 |
-| powerlevel10k | `prompt/` (this repo) | 7 |
-| VS Code | [defdo-vscode-themes](https://github.com/defdo-dev/defdo-vscode-themes) | 7 |
-| Zed | [zed-themes](https://github.com/defdo-dev/zed-themes) | 7 |
+| iTerm2 color presets | `themes/` (this repo) | 10 |
+| iTerm2 Dynamic Profiles | `tools/gen_iterm2_profiles.py` → `DynamicProfiles/defdo-profiles.json` | 10 |
+| OpenCode TUI | `opencode/` (this repo) | 10 |
+| powerlevel10k | `prompt/` (this repo) | 10 |
+| VS Code | [defdo-vscode-themes](https://github.com/defdo-dev/defdo-vscode-themes) | 10 |
+| Zed | [zed-themes](https://github.com/defdo-dev/zed-themes) | 10 |
+| JetBrains / Android Studio | `jetbrains/` (this repo) | 10 |
+| Arduino IDE 2 | `arduino/` (this repo) | 10 |
+| Xcode | `xcode/` (this repo) | 10 |
 
 ## Themes
 
@@ -25,6 +28,9 @@ from these colors:
 | `solid-gray` | `#303841` | `#bebc2e` | |
 | `shadow` | `#191a19` | `#bebc2e` | |
 | `yellow` | `#0f0f0a` | `#f9bc02` | Matches the defdo-yellow VS Code theme |
+| `latte` | `#f7f2e9` | `#0e9bc0` | PREMIUM — light mode, defdo.dev brand |
+| `pro` | `#0e1420` | `#29d3f5` | PREMIUM — electric cyan |
+| `legend` | `#131c21` | `#ffc94f` | PREMIUM — gold |
 
 ## OpenCode themes
 
@@ -105,3 +111,19 @@ themes/
 ## License
 
 Apache License 2.0. See [LICENSE](LICENSE).
+
+## IDE exports (JetBrains, Arduino, Xcode)
+
+`tools/gen_ide_themes.py` emits all ten variants for the editors your stack
+actually uses:
+
+```
+jetbrains/defdo-<slug>.theme        # Android Studio / IntelliJ: Settings → Editor → Color Scheme → gear → Import Scheme
+arduino/defdo-<slug>.settings.json  # Arduino IDE 2: merge into settings.json (File → Preferences → Settings JSON)
+xcode/defdo-<slug>.xccolortheme     # Xcode: copy to ~/Library/Developer/Xcode/UserData/FontAndColorThemes/
+```
+
+## Premium line
+
+`latte`, `pro` and `legend` are the premium tier (see `premium/index.html`
+for the catalog page). Landing is static HTML — no build step, no Node.
