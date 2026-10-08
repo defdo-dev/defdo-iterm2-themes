@@ -7,6 +7,7 @@ REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SLUG="${1:-base}"
 ITTERM_DIR="$HOME/Library/Application Support/iTerm2"
 OPENCODE_THEME_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/opencode/themes"
+ALL_SLUGS=$(cd "$REPO_DIR/themes" && ls defdo-theme.*.itermcolors | sed -e 's/defdo-theme\.//' -e 's/\.itermcolors//')
 
 THEME_FILE="$REPO_DIR/themes/defdo-theme.${SLUG}.itermcolors"
 [[ -f "$THEME_FILE" ]] || { echo "unknown theme: $SLUG (available: $(cd "$REPO_DIR/themes" && ls defdo-theme.*.itermcolors | sed -e 's/defdo-theme\.//' -e 's/\.itermcolors//' | tr '\n' ' '))" >&2; exit 1; }
@@ -35,17 +36,21 @@ if command -v jq >/dev/null 2>&1 && [[ -f "$REPO_DIR/tools/gen_iterm2_profiles.p
   python3 "$REPO_DIR/tools/gen_iterm2_profiles.py" --install
 fi
 
-# 3. OpenCode theme JSON
+# 3. OpenCode theme JSON — every theme (Cmd+/theme picker needs them all)
 mkdir -p "$OPENCODE_THEME_DIR"
-cp "$REPO_DIR/opencode/defdo-${SLUG}.json" "$OPENCODE_THEME_DIR/"
-echo "OpenCode: installed defdo-${SLUG} to $OPENCODE_THEME_DIR"
+for slug in $ALL_SLUGS; do
+  cp "$REPO_DIR/opencode/defdo-${slug}.json" "$OPENCODE_THEME_DIR/"
+done
+echo "OpenCode: installed $(echo "$ALL_SLUGS" | wc -w | tr -d ' ') themes to $OPENCODE_THEME_DIR"
 
 # 3b. vim / Neovim colorscheme (both dirs unconditionally — nvim's rtp is
 #     ~/.config/nvim and it may not exist yet on first install)
 for cd in "$HOME/.vim/colors" "$HOME/.config/nvim/colors"; do
   mkdir -p "$cd"
-  cp "$REPO_DIR/vim/defdo_${SLUG//-/_}.vim" "$cd/" 2>/dev/null \
-    && echo "vim: installed defdo_${SLUG//-/_}.vim -> $cd"
+  for slug in $ALL_SLUGS; do
+    cp "$REPO_DIR/vim/defdo_${slug//-/_}.vim" "$cd/" 2>/dev/null
+  done
+  echo "vim: installed all colorschemes -> $cd"
 done
 
 # 4. Activate in tui.json (create if missing, preserve other keys)
