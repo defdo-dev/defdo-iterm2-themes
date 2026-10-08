@@ -54,7 +54,6 @@ def profile(slug, colors):
 def studio_profile(base_colors):
     """Auto-launch profile: opens iTerm straight into the default studio space."""
     p = profile("studio", base_colors)
-    p["Badge Format"] = "defdo studio"
     p["Custom Command"] = "Yes"
     p["Command"] = ("zsh -ic 'command -v studio >/dev/null && studio default"
                     " || echo \"studio not found — see ~/.dotfiles/defdo-ai-studio/README.md\" && zsh -l'")
